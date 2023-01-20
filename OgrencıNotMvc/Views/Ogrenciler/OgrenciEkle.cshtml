@@ -1,0 +1,43 @@
+﻿@model OgrencıNotMvc.Models.Entity_Framework.TBLOGRENCILER
+@{
+    ViewBag.Title = "OgrenciEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post" class="form-group">
+    <div>
+        <label> Öğrenci Adı</label>
+        <input type="text" class="form-control " name="OGRAD" />
+    </div>
+    <div style="margin-top:10px ">
+        <label> Öğrenci Soyad</label>
+        <input type="text" class="form-control " name="OGRSOYAD" />
+    </div>
+    <div style="margin-top:10px ">
+        <label> Öğrenci Fotoğraf</label>
+        <input type="text" class="form-control " name="OGRFOTO" />
+    </div>
+    <div style="margin-top:10px ">
+        <label> Öğrenci CİNSİYET</label>
+        @Html.DropDownList( "OGRCINSIYET",
+       new[]
+       {
+           new SelectListItem(){Value="KADIN", Text="KADIN"},
+            new SelectListItem(){Value="ERKEK", Text="ERKEK"}
+       },"Cinsiyet Seçiniz ...",new { @name = "OGRCINSIYET", @class ="form-control" }
+       )
+
+     
+    </div>
+    <div style="margin-top:10px ">
+        <label> Öğrenci KULUP</label>
+        @Html.DropDownListFor(m=>m.TBLKULUPLER.KULUPID,(List<SelectListItem>)ViewBag.dgr,new {@class="form-control" })
+    </div>
+    <div style="margin-top:10px ">
+        <button class="btn btn-info">Öğrenci Ekle</button>
+    </div>
+</form>
+<div style="margin-top:100px ">
+    <a href="/Ogrenciler/Index" class="btn-link">ÖĞRENCİ LİSTESİ</a>
+</div>
+
